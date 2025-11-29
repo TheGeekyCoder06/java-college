@@ -30,14 +30,9 @@ class Son extends Father {
     Son(int fatherAge, int sonAge) throws WrongAgeException, SonAgeException {
         super(fatherAge);
 
-        if (sonAge < 0) {
-            throw new SonAgeException("Son's age cannot be negative");
-        }
-
         if (sonAge >= fatherAge) {
             throw new SonAgeException("Son's age cannot be >= Father's age");
         }
-
         this.sonAge = sonAge;
         System.out.println("Son's age set to " + sonAge);
     }
@@ -46,14 +41,11 @@ class Son extends Father {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter son's age and father's age:");
-        
+        System.out.println("Enter son and father's age");
         int sonAge = sc.nextInt();
         int fatherAge = sc.nextInt();
-
         try {
-            // correct order: fatherAge first, sonAge second
-            Son s = new Son(fatherAge, sonAge);
+            Son s = new Son(sonAge , fatherAge);
         } catch (WrongAgeException e) {
             System.out.println("Wrong Age exception: " + e.getMessage());
         } catch (SonAgeException e) {
